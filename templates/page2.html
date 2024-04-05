@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% set active_page = "page1" %}
+
+{% block title %}Page 1{% endblock %}
+
+{% block content %}
+      
+		<h1 class = "headers">About the Food Data</h1>
+        <p class = "homeP">The data in this website comes from the CORGIS food data set. The website for the data can be found <a href="https://think.cs.vt.edu/corgis/json/food/">here</a> 
+		. The data has information on a variety of different foods and drinks. This information includes 
+		the different vitamins and nutrients in each item. The items are also sorted into categories with a 
+		description and a nutrient data bank number to set them apart from the other foods and drinks.</p>
+	
+		<p class = "homeP">The vitamins and nutrients are recorded with different measurements. For example, one of the nutrients is 
+		Beta Carotene and this is measured in mcg. Other examples would be protein which is measured in g and calcium
+		which is measured in mg.</p>
+	
+   {% endblock %}
