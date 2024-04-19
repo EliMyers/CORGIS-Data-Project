@@ -1,0 +1,33 @@
+ body{
+	 background: MintCream;
+ }
+ 
+ h1{
+	 text-align: center;
+	 padding: 2%;
+	 font-family: "Georgia";
+
+ }
+ 
+ .homeP{
+	 margin: 2%;
+	 font-family: "Georgia";
+	 font-size: 110%;
+ }
+ 
+ form{
+	 margin: 2%;
+	 font-family: "Georgia";
+ }
+ 
+ .nutrientFacts{
+	 margin: 2%;
+	 font-family: "Georgia";
+	 font-size: 110%;
+ }
+ 
+ .instructions{
+	 text-align: center;
+	 font-family: "Georgia";
+	 font-size: 110%;
+ }

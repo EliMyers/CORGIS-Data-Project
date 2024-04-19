@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% set active_page = "page2" %}
+
+{% block title %}Page 2{% endblock %}
+
+{% block content %}
+      
+	<h1>Highest Amounts</h1>
+	<p class = "instructions">Select a nutrient option and category to get the item with the highest amount of that nutrient.</p>
+
+
+		<form action="/highestAmounts">
+          <select name="mostType"> <!-- add onchange="this.form.submit()" to submit/update the form when an option is selected.  Usefull for then displaying county options. -->
+			<option value = "Carbohydrate">Carbohydrate</option> 
+			<option value = "Cholesterol">Cholesterol</option>
+			<option value = "Fiber">Fiber</option> 
+			<option value = "Protein">Protein</option> 
+			<option value = "Sugar Total">Sugar</option> 
+			<option value = "Water">Water</option> 
+		  </select>			
+		  <br><br>
+
+          <select name="category"> <!-- add onchange="this.form.submit()" to submit/update the form when an option is selected.  Usefull for then displaying county options. -->
+            {{ category_options  }}
+          </select>
+		  <br><br>
+          <input type="submit" value="Get highest amounts">
+        </form>
+		
+		<div class="nutrientFacts">
+			<p>{{ highest_fact }}</p>
+        </div>
+	
+{% endblock %}

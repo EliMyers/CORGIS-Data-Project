@@ -62,7 +62,7 @@ def render_charts():
         description = request.args.get('description')
         carb = get_data(description, "Carbohydrate")
         protein = get_data(description, "Protein")
-        calcium = get_one_mineral(description, "Calcium")
+        calcium = get_one_mineral(description, "Calcium") 
         potassium = get_one_mineral(description, "Potassium")
         sodium = get_one_mineral(description, "Sodium")
         vitaminC = get_one_vitamin(description, "Vitamin C")

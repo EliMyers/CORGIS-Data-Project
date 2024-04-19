@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% set active_page = "page3" %}
+
+{% block title %}Page 3{% endblock %}
+
+{% block content %}
+
+	<h1>Charts</h1>
+	<p class = "instructions">Select a category then select a specific item in that category to get a chart.</p>
+	<p class = "instructions">Carbohydrates and Protein measured are in g. Calcium, Potassium, Sodium, and Vitamin C are measured in mg.</p>
+
+
+
+
+	<form action="/charts">
+          <select name="category"> <!-- add onchange="this.form.submit()" to submit/update the form when an option is selected.  Usefull for then displaying county options. -->
+            {{ category_options }}
+          </select>
+          <br><br>
+          <input type="submit" value="Get different types">
+        </form>
+		
+		<form action="/charts">
+          <select name="description"> <!-- add onchange="this.form.submit()" to submit/update the form when an option is selected.  Usefull for then displaying county options. -->
+            {{ description_options }}
+          </select>
+          <br><br>
+          <input type="submit" value="Get nutrient facts">
+        </form>
+		<script type="text/javascript">
+		
+		
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	theme: "light2", // "light2", "dark1", "dark2"
+	animationEnabled: true, // change to true		
+	title:{
+			},
+	data: [
+	{
+		// Change type to "bar", "area", "spline", "pie",etc.
+		type: "column",
+		dataPoints: [
+			{ label: "Carbohydrate", y: {{ carbNum }}  },
+			{ label: "Protein",  y: {{ proteinNum }}  },
+			{ label: "Calcium", y: {{ calciumNum }}  },
+			{ label: "Potassium",  y: {{ potassiumNum }}  },
+			{ label: "Sodium",  y: {{ sodiumNum }}  },
+			{ label: "Vitamin C",  y: {{ vitaminCNum }}  }
+		]
+	}
+	]
+});
+chart.render();
+
+}
+</script>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://cdn.canvasjs.com/canvasjs.min.js"> </script>
+{% endblock %}
