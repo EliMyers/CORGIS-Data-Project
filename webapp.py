@@ -7,6 +7,29 @@ app = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  
 def render_main():
     return render_template('home.html')
     
+    
+@app.route('/showNutrients')
+def render_Nutrients():
+    categories = get_category_options()
+    fatInfo = ""
+    mineralInfo = ""
+    vitaminInfo = "" 
+    descriptions = ""
+    if "category" in request.args:
+        category = request.args.get('category')
+        descriptions = get_description_options(category)
+    elif "description" in request.args:
+        description = request.args.get('description')
+        minerals = get_minerals(description)
+        mineralInfo = "In " + description + ", the major minerals are: " + str(minerals) + "."
+        fats = get_fat(description)
+        fatInfo = "In " + description + ", the fats are: " + str(fats) + "."
+        vitamins = get_vitamins(description)
+        vitaminInfo = "In " + description + ", the vitamins are: " + str(vitamins) + "."
+    
+    return render_template('page1.html', category_options=categories, description_options=descriptions, mineral_fact=mineralInfo, fat_fact=fatInfo, vitamin_fact=vitaminInfo)
+
+
 @app.route("/highestAmounts")
 def render_page2():
     fact = ""
@@ -23,27 +46,6 @@ def render_page2():
         fact = "In the " + category + " category, the option with the highest " + typeOfHighest + " is " + mostFact + "."
 
     return render_template('page2.html', category_options=categories, highest_fact=fact)
-    
-@app.route('/showNutrients')
-def render_Nutrients():
-    categories = get_category_options()
-    fatInfo = ""
-    mineralInfo = ""
-    vitaminInfo = ""
-    descriptions = ""
-    if "category" in request.args:
-        category = request.args.get('category')
-        descriptions = get_description_options(category)
-    elif "description" in request.args:
-        description = request.args.get('description')
-        minerals = get_minerals(description)
-        mineralInfo = "In " + description + ", the major minerals are: " + str(minerals) + "."
-        fats = get_fat(description)
-        fatInfo = "In " + description + ", the fats are: " + str(fats) + "."
-        vitamins = get_vitamins(description)
-        vitaminInfo = "In " + description + ", the vitamins are: " + str(vitamins) + "."
-    
-    return render_template('page1.html', category_options=categories, description_options=descriptions, mineral_fact=mineralInfo, fat_fact=fatInfo, vitamin_fact=vitaminInfo)
     
 @app.route('/charts')
 def render_charts():

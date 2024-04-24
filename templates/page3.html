@@ -2,7 +2,7 @@
 
 {% set active_page = "page3" %}
 
-{% block title %}Page 3{% endblock %}
+{% block title %}Charts{% endblock %}
 
 {% block content %}
 
@@ -15,7 +15,7 @@
 
 	<form action="/charts">
           <select name="category"> <!-- add onchange="this.form.submit()" to submit/update the form when an option is selected.  Usefull for then displaying county options. -->
-            {{ category_options }}
+           {{ category_options }}
           </select>
           <br><br>
           <input type="submit" value="Get different types">
@@ -33,9 +33,12 @@
 		
 window.onload = function () {
 
+
+
 var chart = new CanvasJS.Chart("chartContainer", {
 	theme: "light2", // "light2", "dark1", "dark2"
 	animationEnabled: true, // change to true		
+
 	title:{
 			},
 	data: [
@@ -43,12 +46,12 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		// Change type to "bar", "area", "spline", "pie",etc.
 		type: "column",
 		dataPoints: [
-			{ label: "Carbohydrate", y: {{ carbNum }}  },
-			{ label: "Protein",  y: {{ proteinNum }}  },
-			{ label: "Calcium", y: {{ calciumNum }}  },
-			{ label: "Potassium",  y: {{ potassiumNum }}  },
-			{ label: "Sodium",  y: {{ sodiumNum }}  },
-			{ label: "Vitamin C",  y: {{ vitaminCNum }}  }
+			{ label: "Carbohydrate", y: {{ carbNum }}, color: "Peru"  },
+			{ label: "Protein",  y: {{ proteinNum }}, color: "Salmon"    },
+			{ label: "Calcium", y: {{ calciumNum }}, color: "Moccasin"    },
+			{ label: "Potassium",  y: {{ potassiumNum }}, color: "yellow"    },
+			{ label: "Sodium",  y: {{ sodiumNum }}, color: "CadetBlue"    },
+			{ label: "Vitamin C",  y: {{ vitaminCNum }}, color: "orange"    }
 		]
 	}
 	]
